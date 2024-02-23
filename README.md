@@ -1,2 +1,2 @@
-# CEN
+# Campus Marketplace
 College Exchange Network
