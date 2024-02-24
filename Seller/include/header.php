@@ -55,7 +55,7 @@
       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
         <li class="dropdown-header">
           <h6>Campus Marketplace</h6>
-          <span>Admin</span>
+          <span>Seller</span>
         </li>
         <li>
           <hr class="dropdown-divider">
@@ -144,45 +144,53 @@
                
                 </ul>
                 </li>
-     
-     
+
                 <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-patch-question"></i><span>Enquries</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed" data-bs-target="#components-nav34" data-bs-toggle="collapse" href="#">
+            <i class="fa-solid fa-box-open"></i><span>Manage Orders</span><i class="fa-solid fa-lock ms-auto"></i></i>
             </a>
             <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 
                   <li class="nav-item">
-            <a class="nav-link collapsed" href="PendingEnq">
+            <a class="nav-link collapsed" href="new_orders.php">
             <i class="bi bi-circle"></i>
-              <span>Pending Enquiry</span>
+              <span>New Orders</span>
             </a>
           </li><!-- End Register Page Nav -->
           
                 
                   <li class="nav-item">
-            <a class="nav-link collapsed" href="SolveEnq">
+            <a class="nav-link collapsed" href="completed_orders.php">
             <i class="bi bi-circle"></i>
-              <span>Solved Enquiry</span>
+              <span>Completed Orders</span>
             </a>
           </li><!-- End Register Page Nav -->
-          
                
                 </ul>
                 </li>
+     
+                <li class="nav-item">
+            <a class="nav-link collapsed" href="#">
+            <i class="fa-solid fa-star"></i>
+              <span>View Reviews</span>
+              <i class="fa-solid fa-lock ms-auto"></i>
+            </a>
+          </li>
 
 
       <li class="nav-item">
-            <a class="nav-link collapsed" href="Passwords">
-            <i class="bi bi-key"></i>
+            <a class="nav-link collapsed" href="#">
+            <i class="fa-solid fa-right-from-bracket"></i>
               <span>Change Password</span>
+              <i class="fa-solid fa-lock ms-auto"></i>
             </a>
           </li>
 
       <li class="nav-item">
-            <a class="nav-link collapsed" href="Logout">
+            <a class="nav-link collapsed" href="#">
             <i class="bi bi-box-arrow-left"></i>
               <span>Log Out</span>
+              <i class="fa-solid fa-lock ms-auto"></i>
             </a>
           </li>
       <!-- End Profile Page Nav -->
