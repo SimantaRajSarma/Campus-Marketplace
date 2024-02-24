@@ -211,14 +211,14 @@ function deleteConfirm(obj){
                 ?>
               <tr>
               <td><b><?php echo $rank?></b></td>
-                <td><img src="<?php echo $row['image_url'];?>" width="100px" height="100px"/></td>
+                <td><img src="assets/products_images/<?php echo $row['image_url'];?>" width="100px" height="100px"/></td>
                 <td><?php echo $row['title'];?>&nbsp;</td>
                 <td><?php echo $row['price'];?></td>
                 <td><?php echo $row['category_name'];?></td>
-                <td><?php echo $row['status'];?></td>
+                <td><button  class="badge bg-success"><?php echo $row['status'];?></button></td>
                 <td></td>
-                <td><button  class="btn btn-secondary"><i class="fa-solid fa-lock ms-auto"></i></button></td>
-                <!-- <i class="fa-solid fa-trash"></i>onclick="javascript: deleteConfirm('delete_data.php?id=<?php echo $row['VehicleID'];?>');" -->
+                <td><button class="btn btn-danger"><i class="fa-solid fa-trash" onclick="deleteConfirm('delete_product.php?id=<?php echo $row['item_id'];?>');"></i></button></td>
+
             </tr>
            
                 <?php $rank++; }?>
