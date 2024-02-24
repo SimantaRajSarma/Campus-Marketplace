@@ -1,252 +1,62 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Feb 23, 2024 at 03:48 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+CREATE TABLE `users` (
+  `user_id` int(11) PRIMARY KEY AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password_hash` varchar(255) NOT NULL
+);
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+CREATE TABLE `sellers` (
+  `seller_id` int(11) PRIMARY KEY,
+  FOREIGN KEY (`seller_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
+);
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `campus_marketplace`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `feedback`
---
-
-CREATE TABLE `feedback` (
-  `feedback_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `transaction_id` int(11) NOT NULL,
-  `rating` tinyint(4) NOT NULL,
-  `comment` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `items`
---
+CREATE TABLE `categories` (
+  `category_id` int(11) PRIMARY KEY AUTO_INCREMENT,
+  `category_name` varchar(50) NOT NULL
+);
 
 CREATE TABLE `items` (
-  `item_id` int(11) NOT NULL,
+  `item_id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `seller_id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `description` text DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
-  `category` varchar(50) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'available',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `items`
---
-
-INSERT INTO `items` (`item_id`, `seller_id`, `title`, `description`, `price`, `category`, `status`, `created_at`) VALUES
-(1, 1, 'Test', 'testing Testing', 1200.00, 'Eyewear', 'available', '2024-02-23 14:31:40');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `item_images`
---
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`seller_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE
+);
 
 CREATE TABLE `item_images` (
-  `image_id` int(11) NOT NULL,
+  `image_id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `item_id` int(11) NOT NULL,
-  `image_url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sellers`
---
-
-CREATE TABLE `sellers` (
-  `seller_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `sellers`
---
-
-INSERT INTO `sellers` (`seller_id`) VALUES
-(1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transactions`
---
+  `image_url` varchar(255) NOT NULL,
+  FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`) ON DELETE CASCADE
+);
 
 CREATE TABLE `transactions` (
-  `transaction_id` int(11) NOT NULL,
+  `transaction_id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `buyer_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
-  `transaction_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `transaction_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (`buyer_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`) ON DELETE CASCADE
+);
 
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`transaction_id`, `buyer_id`, `item_id`, `transaction_date`) VALUES
-(1, 1, 1, '2024-02-23 14:32:02');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
+CREATE TABLE `feedback` (
+  `feedback_id` int(11) PRIMARY KEY AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password_hash` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
+  `transaction_id` int(11) NOT NULL,
+  `rating` tinyint(4) NOT NULL,
+  `comment` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
+  FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`) ON DELETE CASCADE
+);
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`) VALUES
 (1, 'sima', 'sima@prakity.com', 'hello@123');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`feedback_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `transaction_id` (`transaction_id`);
-
---
--- Indexes for table `items`
---
-ALTER TABLE `items`
-  ADD PRIMARY KEY (`item_id`),
-  ADD KEY `seller_id` (`seller_id`);
-
---
--- Indexes for table `item_images`
---
-ALTER TABLE `item_images`
-  ADD PRIMARY KEY (`image_id`),
-  ADD KEY `item_id` (`item_id`);
-
---
--- Indexes for table `sellers`
---
-ALTER TABLE `sellers`
-  ADD PRIMARY KEY (`seller_id`);
-
---
--- Indexes for table `transactions`
---
-ALTER TABLE `transactions`
-  ADD PRIMARY KEY (`transaction_id`),
-  ADD KEY `buyer_id` (`buyer_id`),
-  ADD KEY `item_id` (`item_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `items`
---
-ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `item_images`
---
-ALTER TABLE `item_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `transactions`
---
-ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`);
-
---
--- Constraints for table `items`
---
-ALTER TABLE `items`
-  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`user_id`);
-
---
--- Constraints for table `item_images`
---
-ALTER TABLE `item_images`
-  ADD CONSTRAINT `item_images_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`);
-
---
--- Constraints for table `sellers`
---
-ALTER TABLE `sellers`
-  ADD CONSTRAINT `sellers_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`user_id`);
-
---
--- Constraints for table `transactions`
---
-ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`buyer_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `sellers` (`seller_id`) VALUES
+(1);

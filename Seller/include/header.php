@@ -3,8 +3,8 @@
 
 <div class="d-flex align-items-center justify-content-between">
   <a href="s-dash.php" class="logo d-flex align-items-center">
-    <img src="https://gyandeep.org.in/gyandeep.jpg" alt="">
-    <span class="d-none d-lg-block">Gyandeep</span>
+    <img src="assets/logo.png" alt="">
+    <span class="d-none d-lg-block">Campus Marketplace</span>
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
 </div><!-- End Logo -->
@@ -46,10 +46,9 @@
     <li class="nav-item dropdown pe-3">
 
       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-        <!--<img src="../centre/images/6002957819_16887906934711_dp.jpg" alt="Profile" class="rounded-circle">-->
+        <img src="assets/logo.png" alt="Profile" class="rounded-circle bg-dark">
        
-        <span class="d-none d-md-block dropdown-toggle ps-2">
-      Gyandeep Learning   </span>
+        <span class="d-none d-md-block dropdown-toggle ps-2">AEC</span>
 
       </a><!-- End Profile Iamge Icon -->
 
@@ -124,22 +123,22 @@
       
       <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-album"></i><span>Course</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="fa-solid fa-box"></i><span>Product Management</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 
                   <li class="nav-item">
-            <a class="nav-link collapsed" href="AddCourse">
+            <a class="nav-link collapsed" href="add_product.php">
             <i class="bi bi-circle"></i>
-              <span>Add Course</span>
+              <span>Add Product</span>
             </a>
           </li><!-- End Register Page Nav -->
           
                 
                   <li class="nav-item">
-            <a class="nav-link collapsed" href="ManageCourse">
+            <a class="nav-link collapsed" href="manage_product.php">
             <i class="bi bi-circle"></i>
-              <span>Manage Course</span>
+              <span>Manage Product</span>
             </a>
           </li><!-- End Register Page Nav -->
                
