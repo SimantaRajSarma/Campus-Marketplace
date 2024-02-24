@@ -1,12 +1,12 @@
 
 <?php
-session_start();
+// session_start();
 include("include/connection.php");
 
-if (!isset($_SESSION["admin_id"])) {
-    header("location:index.php");
-    exit();
-}
+// if (!isset($_SESSION["admin_id"])) {
+//     header("location:index.php");
+//     exit();
+// }
 
 ?>
 
@@ -33,6 +33,9 @@ if (!isset($_SESSION["admin_id"])) {
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <script src="assets/vendor/fontawesome/fontawesome.js"></script>
+
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
@@ -65,47 +68,6 @@ include('include/header.php');
         <!-- Left side columns -->
         <div class="col-lg-8">
           <div class="row">
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Customer <span>| Total</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-people-fill"></i>
-                    </div>
-                    <div class="ps-3">
-                      <!-- Assuming your HTML structure -->
-<h6>
-<?php
-
-// Fetch total number of medicines from the 'medicine' table
-$sql = "SELECT COUNT(*) AS total_users FROM users"; // Replace 'medicine' with your actual table name
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-$row = $result->fetch_assoc();
-$total_students = $row["total_users"];
-echo $total_students;
-} else {
-echo "0"; // If there are no medicines in the table
-}
-
-?>
-</h6>
-
-                      
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-           
 
 
               <!-- Revenue Card -->
@@ -145,52 +107,7 @@ echo "0"; // If there are no medicines in the table
 
               </div>
             </div><!-- End Revenue Card -->
-
-
-            
-              <!-- Revenue Card -->
-              <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-
-                <div class="card-body">
-                  <h5 class="card-title">Seller<span> | Total</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-journal-album"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>
-    0
- </h6>
-
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
-            
-
-            
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-          </div>
+    </div>
         </div><!-- End Left side columns -->
 
         <!-- Right side columns -->
@@ -236,8 +153,6 @@ include('include/footer.php');
   <script src="assets/vendor/echarts/echarts.min.js"></script>
   <script src="assets/vendor/quill/quill.min.js"></script>
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
