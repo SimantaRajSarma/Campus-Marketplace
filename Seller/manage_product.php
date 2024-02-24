@@ -3,10 +3,15 @@ error_reporting(0);
     require_once('include/connection.php');
 
     // SQL query to retrieve all data from the vehicle table
-    $sql = "SELECT items.*, item_images.image_url 
-    FROM items 
-    LEFT JOIN item_images ON items.item_id = item_images.item_id;
-    ";
+    $sql = "SELECT items.*, item_images.image_url, categories.category_name
+    FROM items
+    LEFT JOIN (
+        SELECT item_id, image_url
+        FROM item_images
+        GROUP BY item_id
+    ) AS item_images ON items.item_id = item_images.item_id
+    LEFT JOIN categories ON items.category_id = categories.category_id
+    WHERE seller_id = 1";
 
     // Execute the query
     $result = $conn->query($sql);
@@ -153,7 +158,7 @@ include('include/header.php');
   <h1>Manage Products</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+      <li class="breadcrumb-item"><a href="dash.php">Home</a></li>
       <li class="breadcrumb-item">Tables</li>
       <li class="breadcrumb-item active">Data</li>
     </ol>
@@ -193,10 +198,9 @@ function deleteConfirm(obj){
               <th scope="col">#</th>
                 <th scope="col">Photo</th>
                 <th scope="col">Product Name</th>
-                <th scope="col">Capacity</th>
-                <th scope="col">Ownership</th>
-                <th scope="col">Driver Name</th>
-                <th scope="col">Vehicle Owner</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Status</th>
                 <th></th>
                 <th scope="col">Action</th>
               </tr>
@@ -207,12 +211,11 @@ function deleteConfirm(obj){
                 ?>
               <tr>
               <td><b><?php echo $rank?></b></td>
-                <td><?php echo $row['VehicleNo'];?></td>
-                <td><?php echo $row['VehicleType'];?>&nbsp;</td>
-                <td><?php echo $row['Capacity'];?></td>
-                <td><?php echo $row['OwnerType'];?></td>
-                <td><?php echo $row['OwnerType'];?></td>
-                <td><?php echo $row['VehicleOwner'];?></td>
+                <td><img src="<?php echo $row['image_url'];?>" width="100px" height="100px"/></td>
+                <td><?php echo $row['title'];?>&nbsp;</td>
+                <td><?php echo $row['price'];?></td>
+                <td><?php echo $row['category_name'];?></td>
+                <td><?php echo $row['status'];?></td>
                 <td></td>
                 <td><button  class="btn btn-secondary"><i class="fa-solid fa-lock ms-auto"></i></button></td>
                 <!-- <i class="fa-solid fa-trash"></i>onclick="javascript: deleteConfirm('delete_data.php?id=<?php echo $row['VehicleID'];?>');" -->
