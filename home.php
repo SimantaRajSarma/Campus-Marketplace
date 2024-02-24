@@ -16,7 +16,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+  <script src="https://kit.fontawesome.com/2b22d04427.js" crossorigin="anonymous"></script>
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -126,7 +126,7 @@ include('include/header.php');
                         ?>
                         <!-- Category -->
                         <div class="category col-md-3 text-center">
-                            <img src="<?php echo $row["img_url"]; ?>" width="150px" alt="<?php echo $row["category_name"]; ?>" class="img-fluid rounded-circle">
+                            <img src="<?php echo $row["img_url"]; ?>" width="100px" alt="<?php echo $row["category_name"]; ?>" class="img-fluid rounded-circle">
                             <h5 class="card-title text-center"><?php echo $row["category_name"]; ?></h5>
                         </div>
                         <?php
@@ -163,7 +163,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $image_urls = explode(',', $row['image_urls']);
-        ?>
+?>
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
                 <?php if (count($image_urls) > 1) { ?>
@@ -172,11 +172,11 @@ if ($result->num_rows > 0) {
                             <?php
                             foreach ($image_urls as $key => $image_url) {
                                 $active_class = ($key == 0) ? 'active' : '';
-                                ?>
+                            ?>
                                 <div class="carousel-item <?php echo $active_class; ?>">
                                     <img class="d-block w-100" src="Seller/assets/products_images/<?php echo $image_url; ?>" alt="Slide <?php echo $key + 1; ?>">
                                 </div>
-                                <?php
+                            <?php
                             }
                             ?>
                         </div>
@@ -190,22 +190,25 @@ if ($result->num_rows > 0) {
                         </button>
                     </div>
                 <?php } else { ?>
-                    <img class="card-img-top" src="<?php echo $image_urls[0]; ?>" alt="" >
+                    <img class="card-img-top" src="Seller/assets/products_images/<?php echo $image_urls[0]; ?>" height="200px" alt="" >
                 <?php } ?>
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $row["title"]; ?></h4>
+                   <h5 class="card-title">Books </h5>
                     <p class="card-text"><?php echo $row["description"]; ?></p>
+                   
                 </div>
+                
                 <div class="card-footer">
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary">Buy Now</button>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-bag-fill"></i>&nbsp;Buy Now</button>
                         &nbsp; &nbsp; &nbsp; &nbsp;
-                        <button type="button" class="btn btn-success">Add to Cart</button>
+                        <button type="button" class="btn btn-success"><i class="bi bi-bag-plus-fill"></i>&nbsp;Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
-        <?php
+<?php
     }
 } else {
     echo "0 results";
@@ -213,7 +216,6 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-    
     <!-- Repeat the above code for each product -->
     
   </div>

@@ -6,7 +6,7 @@ $username="root";
 
 $password="";
 
-$dbname="campus_marketplace";
+$dbname="campus";
 
 $conn=mysqli_connect($servername,$username,$password,$dbname);
 

@@ -2,13 +2,13 @@
 
   <div class="d-flex align-items-center justify-content-between">
     <a href="dash.php" class="logo d-flex align-items-center">
-      <img src="assets/img/logo/logo.png" alt="">
+      <img src="http://localhost/Campus-Marketplace/Seller/assets/logo.jpg" alt="">
       <span class="d-none d-lg-block">Campus Store</span>
     </a>
   </div><!-- End Logo -->
   
   <form class="d-flex">
-    <input class="form-control me-5" type="search" placeholder="Search for Product , Category .." aria-label="Search" style="width: 300px;">
+    <input class="form-control me-5" type="search" placeholder="Search for Product , Category .." aria-label="Search" style="width: 400px;">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 
