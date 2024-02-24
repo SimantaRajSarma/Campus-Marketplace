@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Infotech Computer Education Centre</title>
+	<title>Campus Marketplace</title>
 
 <!-- Favicons -->
 <link href="assets/img/logo.png" rel="icon">
@@ -174,7 +174,7 @@ if ($result->num_rows > 0) {
                                 $active_class = ($key == 0) ? 'active' : '';
                                 ?>
                                 <div class="carousel-item <?php echo $active_class; ?>">
-                                    <img class="d-block w-100" src="<?php echo $image_url; ?>" alt="Slide <?php echo $key + 1; ?>">
+                                    <img class="d-block w-100" src="Seller/assets/products_images/<?php echo $image_url; ?>" alt="Slide <?php echo $key + 1; ?>">
                                 </div>
                                 <?php
                             }
