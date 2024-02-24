@@ -126,7 +126,7 @@ include('include/header.php');
                         ?>
                         <!-- Category -->
                         <div class="category col-md-3 text-center">
-                            <img src="<?php echo $row["img_url"]; ?>" width="100px" alt="<?php echo $row["category_name"]; ?>" class="img-fluid rounded-circle">
+                            <img src="<?php echo $row["img_url"]; ?>" width="100px" height="100px" alt="<?php echo $row["category_name"]; ?>" class="img-fluid rounded-circle">
                             <h5 class="card-title text-center"><?php echo $row["category_name"]; ?></h5>
                         </div>
                         <?php

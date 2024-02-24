@@ -15,15 +15,17 @@
   <nav class="header-nav ms-auto">
     <ul class="d-flex align-items-center flex-wrap"> <!-- Added flex-wrap class -->
       <li class="nav-item">
-        <a class="nav-link nav-icon" href="index2.php" >Login</a>
+        <a class="nav-link nav-icon" href="index2.php" ><i class="bi bi-person-fill"></i> Login</a>
         <ul class="dropdown-menu">
           <li><a href="#">New Registration</a></li>
-          <li><a href="#">My Profile</a></li>
-          <li><a href="#">My Order</a></li>
+          <li><a href="#"> <i class="bi bi-person-fill"></i> My Profile</a></li>
+          <li><a href="#"> <i class="bi bi-box-seam-fill"></i> My Order</a></li>
         </ul>
       </li>
-      <li class="nav-item"><a class="nav-link nav-icon" href="cart.php" >Cart</a></li>
-      <li class="nav-item"><a class="nav-link nav-icon" href="index6.php">Become a Seller</a></li>
+      <li class="nav-item"><a class="nav-link nav-icon" href="cart.php" > <i class="bi bi-bag-plus-fill"></i> Cart</a></li>
+
+      <li class="nav-item"><a class="nav-link nav-icon" href="cart.php" > <i class="bi bi-arrow-clockwise"></i> Switch to Seller</a></li>
+      
     </ul>
   </nav><!-- End Icons Navigation -->
 </header><!-- End Header -->
