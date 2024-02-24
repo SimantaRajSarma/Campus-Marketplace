@@ -114,25 +114,6 @@ echo "0"; // If there are no medicines in the table
         <div class="col-lg-4">
 
 
-        <!-- Total Sales -->
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Gyandeep</h5>
-
-        <div class="activity">
-           
-        Choosing Coachdrpd opens doors to a wider range of possibilities and enhances one's ability to navigate the complexities.Answer in Life what is Next.
-        1.For Complete Holistic Development of a Child
-2.Get Education in a single Platform.
-3.Academic Education is essential for
-# Personal growth, # Development and # Acquiring the knowledge and
-4.Skills needed for various opportunities in life. # It empowers individuals, #Fosters critical thinking, and # contributes to societal progress.
-        </div>
-    </div>
-</div><!-- End Total Sales -->
-
-
-
         </div><!-- End Right side columns -->
 
       </div>
