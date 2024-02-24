@@ -1,7 +1,7 @@
 
 <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright 2024 ,<strong><span>Gyandeep</span></strong>. All Rights Reserved
+      &copy; Copyright 2024 ,<strong><span>Prakity</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
